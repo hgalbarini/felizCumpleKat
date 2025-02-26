@@ -10,8 +10,52 @@
     <div class="container">
         <h1>Happy Birthday!</h1>
         <p>Wishing you all the best on your special day!</p>
-        <img src="birthday_cake.jpg" alt="Birthday Cake">
+        
+        <!-- Greeting Message -->
+        <div class="greeting">
+            <h2>Dear [Name],</h2>
+            <p>May your birthday be filled with joy, love, and laughter. Have an amazing year ahead!</p>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <h3>Countdown to your special moment:</h3>
+            <div id="timer">
+                <span id="days"></span> Days
+                <span id="hours"></span> Hours
+                <span id="minutes"></span> Minutes
+                <span id="seconds"></span> Seconds
+            </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <div class="gallery">
+            <h3>Memorable Moments</h3>
+            <div class="photos">
+                <img src="photo1.jpg" alt="Photo 1">
+                <img src="photo2.jpg" alt="Photo 2">
+                <img src="photo3.jpg" alt="Photo 3">
+            </div>
+        </div>
+
+        <!-- Guest Book -->
+        <div class="guestbook">
+            <h3>Leave a Message</h3>
+            <form id="guestbook-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="messages"></div>
+        </div>
+
+        <!-- Confetti Animation -->
+        <div id="confetti"></div>
     </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" src="happy_birthday.mp3" autoplay loop></audio>
+
     <script src="script.js"></script>
 </body>
 </html>
