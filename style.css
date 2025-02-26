@@ -19,12 +19,34 @@ body {
     overflow-y: auto;
 }
 
+#countdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    font-size: 5em;
+}
+
 h1 {
     color: #ff4081;
 }
 
 p {
     color: #333333;
+}
+
+.main-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
 }
 
 .greeting {
