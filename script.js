@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const audio = document.getElementById('background-music');
     const playButton = document.createElement('button');
-    playButton.innerText = "Play Music";
-    document.body.appendChild(playButton);
+    playButton.innerText = "no lo apretes";
+    // Find the `.greeting` div and append the button inside it
+    const greetingDiv = document.querySelector('.greeting');
+    greetingDiv.appendChild(playButton);
 
     playButton.addEventListener('click', () => {
         audio.play().catch(error => console.error("Audio play failed:", error));
