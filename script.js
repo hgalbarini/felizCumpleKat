@@ -4,21 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Countdown Overlay
     const countdownOverlay = document.getElementById('countdown-overlay');
     const countdownElement = document.getElementById('countdown');
-
-    let countdownValue = 3;
-    countdownElement.innerHTML = countdownValue;
-
-    const countdownInterval = setInterval(() => {
-        countdownValue--;
-        if (countdownValue <= 0) {
-            clearInterval(countdownInterval);
-            countdownOverlay.style.display = 'none';
-            backgroundMusic.play();
-        } else {
-            countdownElement.innerHTML = countdownValue;
-        }
-    }, 1000);
-
+    
     //Play audio
     const audio = document.getElementById('background-music');
     const playButton = document.createElement('button');
@@ -38,6 +24,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     playAudio();
+    let countdownValue = 3;
+    countdownElement.innerHTML = countdownValue;
+
+    const countdownInterval = setInterval(() => {
+        countdownValue--;
+        if (countdownValue <= 0) {
+            clearInterval(countdownInterval);
+            countdownOverlay.style.display = 'none';
+            backgroundMusic.play();
+        } else {
+            countdownElement.innerHTML = countdownValue;
+        }
+    }, 1000);
+
+
 
     /*
     // Countdown Timer
