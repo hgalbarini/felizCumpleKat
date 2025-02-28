@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Countdown Overlay
     const countdownOverlay = document.getElementById('countdown-overlay');
     const countdownElement = document.getElementById('countdown');
-    const backgroundMusic = document.getElementById('background-music');
 
     let countdownValue = 3;
     countdownElement.innerHTML = countdownValue;
@@ -20,6 +19,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 1000);
 
+    //Play audio
+    const audio = document.getElementById('background-music');
+    const playButton = document.createElement('button');
+    playButton.innerText = "Play Music";
+    playButton.style.display = 'none';  // Hide the button initially
+    document.body.appendChild(playButton);
+
+    function playAudio() {
+        audio.play().catch(() => {
+            // Autoplay failed, show the play button
+            playButton.style.display = 'block';
+            playButton.addEventListener('click', () => {
+                audio.play();
+                playButton.style.display = 'none';  // Hide the button after playing
+            });
+        });
+    }
+
+    playAudio();
+
+    /*
     // Countdown Timer
     const birthday = new Date('2025-02-28T00:00:00').getTime();
     const timer = document.getElementById('timer');
@@ -45,8 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
             timer.innerHTML = "Happy Birthday!";
         }
     }
+    
 
     const interval = setInterval(updateTimer, 1000);
+    */
 
     // Guest Book
     const form = document.getElementById('guestbook-form');
