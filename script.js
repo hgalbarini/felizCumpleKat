@@ -4,8 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Countdown Overlay
     const countdownOverlay = document.getElementById('countdown-overlay');
     const countdownElement = document.getElementById('countdown');
-    
-    //Play audio
+
+    //Play audio with button
+
+    const audio = document.getElementById('background-music');
+    const playButton = document.createElement('button');
+    playButton.innerText = "Play Music";
+    document.body.appendChild(playButton);
+
+    playButton.addEventListener('click', () => {
+        audio.play().catch(error => console.error("Audio play failed:", error));
+        playButton.style.display = 'none';
+    });
+
+    /*
+    //Play audio automatically
     const audio = document.getElementById('background-music');
     const playButton = document.createElement('button');
     playButton.innerText = "Play Music";
@@ -24,6 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     playAudio();
+    */
+
+
     let countdownValue = 3;
     countdownElement.innerHTML = countdownValue;
 
@@ -32,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (countdownValue <= 0) {
             clearInterval(countdownInterval);
             countdownOverlay.style.display = 'none';
-            backgroundMusic.play();
+            audio.play();
         } else {
             countdownElement.innerHTML = countdownValue;
         }
