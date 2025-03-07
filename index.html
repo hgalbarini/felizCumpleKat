@@ -3,71 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Happy Birthday Game!</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            overflow: hidden;
+        }
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-image: url('background.jpg'); /* Background image */
+            background-size: cover;
+            overflow: hidden;
+        }
+        .player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('player.png'); /* Player image */
+            background-size: cover;
+            bottom: 50px;
+            left: 50px;
+        }
+        .goal {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('birthday_cake.jpg'); /* Goal image */
+            background-size: cover;
+            bottom: 50px;
+            right: 50px;
+        }
+        .frame {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 300px;
+            height: 200px;
+            background-image: url('photo_frame.png'); /* Frame image */
+            background-size: cover;
+        }
+        .frame img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Countdown Overlay -->
-        <div id="countdown-overlay">
-            <div id="countdown">3</div>
+    <div class="game-container">
+        <div class="player" id="player"></div>
+        <div class="goal"></div>
+        <div class="frame">
+            <img src="photo1.jpg" alt="Memorable Moment">
         </div>
-
-        <h1>Happy Birthday!</h1>
-        <p>Wishing you all the best on your special day!</p>
-        
-        <!-- Birthday Cake Image -->
-        <div class="main-image">
-            <img src="birthday_cake.jpg" alt="Birthday Cake">
-        </div>
-
-        <!-- Greeting Message -->
-        <div class="greeting">
-            <h2>Dear [Name],</h2>
-            <p>May your birthday be filled with joy, love, and laughter. Have an amazing year ahead!</p>
-        </div>
-
-        <!-- Countdown Timer 
-        <div class="countdown">
-            <h3>Countdown to your special moment:</h3>
-            <div id="timer">
-                <span id="days"></span> Days
-                <span id="hours"></span> Hours
-                <span id="minutes"></span> Minutes
-                <span id="seconds"></span> Seconds
-            </div>
-        </div>
-        -->
-
-        <!-- Photo Gallery -->
-        <div class="gallery">
-            <h3>Memorable Moments</h3>
-            <div class="photos">
-                <img src="photo1.jpg" alt="Photo 1">
-                <img src="photo2.jpg" alt="Photo 2">
-                <img src="photo3.jpg" alt="Photo 3">
-            </div>
-        </div>
-
-        <!-- Guest Book -->
-        <div class="guestbook">
-            <h3>Leave a Message</h3>
-            <form id="guestbook-form">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <textarea id="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
-            <div id="messages"></div>
-        </div>
-
-        <!-- Confetti Animation -->
-        <div id="confetti"></div>
     </div>
+    <audio id="background-music" src="happy_birthday.mp3" autoplay loop></audio>
 
-    <!-- Background Music -->
-    <audio id="background-music" src="happy_birthday.mp3" controls></audio>
+    <script>
+        const player = document.getElementById('player');
+        const goal = document.querySelector('.goal');
+        let playerPos = { x: 50, y: window.innerHeight - 100 };
 
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowUp':
+                    if (playerPos.y > 0) playerPos.y -= 10;
+                    break;
+                case 'ArrowDown':
+                    if (playerPos.y < window.innerHeight - 60) playerPos.y += 10;
+                    break;
+                case 'ArrowLeft':
+                    if (playerPos.x > 0) playerPos.x -= 10;
+                    break;
+                case 'ArrowRight':
+                    if (playerPos.x < window.innerWidth - 60) playerPos.x += 10;
+                    break;
+            }
+            player.style.transform = `translate(${playerPos.x}px, ${playerPos.y}px)`;
 
-    <script src="script.js"></script>
+            if (playerPos.x >= window.innerWidth - 150 && playerPos.y >= window.innerHeight - 150) {
+                alert('¡Felicidades! Has encontrado la torta de cumpleaños');
+            }
+        });
+    </script>
 </body>
 </html>
